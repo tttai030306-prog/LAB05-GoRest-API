@@ -1,0 +1,27 @@
+{
+  "id": "b6c8d38e-2d15-4df1-b9d4-05lab00000002",
+  "name": "MSSV_HoTen_GoRest_Env",
+  "values": [
+    {
+      "key": "token",
+      "value": "PASTE_YOUR_GOREST_TOKEN_HERE",
+      "type": "secret",
+      "enabled": true
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://gorest.co.in/public/v2",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "duplicateEmail",
+      "value": "REPLACE_WITH_AN_EXISTING_GOREST_USER_EMAIL",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2026-10-21T09:00:00.000Z",
+  "_postman_exported_using": "Postman/11"
+}

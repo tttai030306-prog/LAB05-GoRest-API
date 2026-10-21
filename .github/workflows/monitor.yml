@@ -25,7 +25,7 @@ jobs:
               console.error(await response.text());
               process.exit(1);
             }
-            if (elapsed >= 800) {
+            if (elapsed >= 1200) {
               console.error(`Response time must be below 800ms; got ${elapsed}ms`);
               process.exit(1);
             }

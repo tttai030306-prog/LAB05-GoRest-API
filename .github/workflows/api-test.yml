@@ -1,0 +1,30 @@
+name: GoRest API Tests
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  api-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Inject token into environment file
+        env:
+          GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
+        run: |
+          node -e "const fs=require('fs'); const p='Environment.json'; const e=JSON.parse(fs.readFileSync(p,'utf8')); const v=e.values.find(x=>x.key==='token'); v.value=process.env.GOREST_TOKEN; fs.writeFileSync(p,JSON.stringify(e,null,2));"
+
+      - name: Run collection with CSV data
+        run: |
+          newman run Collection.json -e Environment.json -d users.csv –bail
